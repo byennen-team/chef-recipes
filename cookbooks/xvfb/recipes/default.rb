@@ -7,11 +7,11 @@ end
 
 list.each { |pkg| package(pkg) { action :install } }
 
-cookbook_file "/etc/init/xvfb.conf" do
+template "/etc/init/xvfb.conf" do
   owner "root"
   group "root"
   mode 0644
-  source "xvfb.conf"
+  source "xvfb.erb"
   variables ({
     :display_size => "#{node['xvfb']['display_size']}",
     :display => "#{node['xvfb']['display']}",
