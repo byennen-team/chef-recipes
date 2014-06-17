@@ -1,12 +1,19 @@
-include_recipe "selenium::server"
+include_recipe 'selenium::default'
+
+directory node['selenium']['server']['installpath']
+
+cookbook_file File.join(node['selenium']['server']['installpath'], 'selenium-standalone-hub.jar') do
+  source "selenium-standalone-hub.jar"
+  action :create
+  mode 0644
+end
 
 template "/etc/init/selenium-hub.conf" do
-  source "ubuntu/hub.erb"
+  source "hub.erb"
   mode 0644
   variables ({
     :xmx => "#{node['selenium']['hub']['memory']}",
-    :selenium => File.join(node['selenium']['server']['installpath'], 'selenium-server-standalone.jar'),
-    :port => "#{node['selenium']['hub']['port']}",
+    :selenium_hub => File.join(node['selenium']['server']['installpath'], 'selenium-standalone-hub.jar'),
     :options => "#{node['selenium']['hub']['options']}",
     :log => File.join(node['selenium']['server']['logpath'], 'hub.log')})
 end
