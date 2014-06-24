@@ -107,10 +107,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # HTTP instead of HTTPS depending on your configuration. Also change the
   # validation key to validation.pem.
   #
-  # config.vm.provision "chef_client" do |chef|
-  #   chef.chef_server_url = "https://api.opscode.com/organizations/ORGNAME"
-  #   chef.validation_key_path = "ORGNAME-validator.pem"
-  # end
+  config.vm.provision "chef_client" do |chef|
+    chef.chef_server_url = "https://api.opscode.com/organizations/bigastronaut"
+    chef.validation_key_path = "/Users/jim/.chef/bigastronaut-validator.pem"
+    chef.validation_client_name = "bigastronaut-validator"
+    chef.add_role "node"
+  end
   #
   # If you're using the Opscode platform, your validator client is
   # ORGNAME-validator, replacing ORGNAME with your organization name.
