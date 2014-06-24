@@ -1,14 +1,3 @@
-#
-# Cookbook Name:: selenium_hub
-# Recipe:: default
-#
-# Copyright 2014, YOUR_COMPANY_NAME
-#
-# All rights reserved - Do Not Redistribute
-
-#
-# Java Installation for selenium server.
-#
 package 'openjdk-7-jre-headless'
 
 user node['selenium']['server']['user'] do

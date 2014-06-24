@@ -1,0 +1,19 @@
+{
+    "capabilities":
+        [
+            {
+                "browserName": "chrome",
+                "version": "<%= @chromeversion %>",
+                "maxInstances": <%= @max_instances %>,
+                "seleniumProtocol": "WebDriver",
+                "platform": "LINUX"
+            },
+        ],
+    "configuration":
+        {
+            "proxy": "org.openqa.grid.selenium.proxy.DefaultRemoteProxy",
+            "maxSession": <%= @max_sessions %>,
+            "register": true,
+            "registerCycle": 5000
+        }
+}

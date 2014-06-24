@@ -23,3 +23,11 @@ service "selenium-hub" do
   supports :restart => true, :start => true, :stop => true
   action [:enable, :start]
 end
+
+# logrotate
+template "/etc/logrotate.d/selenium_hub" do
+  source "logrotate.d/hub.erb"
+  owner "root"
+  group "root"
+  mode "0644"
+end

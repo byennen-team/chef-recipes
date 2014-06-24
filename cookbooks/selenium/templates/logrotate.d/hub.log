@@ -1,0 +1,9 @@
+/var/log/selenium/hub.log {
+    weekly
+    rotate 10
+    copytruncate
+    delaycompress
+    compress
+    notifempty
+    missingok
+}
